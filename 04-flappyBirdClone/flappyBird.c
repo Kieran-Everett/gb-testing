@@ -13,7 +13,8 @@ void main() {
     SHOW_SPRITES; // shows the sprites on the gb screen
 
     while (1) {
-        scroll_sprite(0, 10, 0); // moves the sprite horizontally
+        scroll_sprite(0, 0, 1); // moves the sprite horizontally
+        delay(100);
     }
 
 }
