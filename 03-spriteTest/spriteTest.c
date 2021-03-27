@@ -22,6 +22,8 @@ void main() {
         }
         set_sprite_tile(0, currentSpriteIndex); // updates the '0' sprite to the current sprite index
         delay(1000); // an actual game would use something like a deltaTime check to wait because this hangs the entire program
+
+        scroll_sprite(0, 10, 0); // moves the sprite horizontally
     }
 
 }
