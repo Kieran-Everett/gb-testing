@@ -62,4 +62,3 @@ dkms.conf
 *.lst
 *.noi
 *.sym
-test*
