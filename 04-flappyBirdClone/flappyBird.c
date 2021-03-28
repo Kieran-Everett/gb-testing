@@ -25,6 +25,9 @@ void main() {
     pipeGap[1] = 0; // index 1 is the height of the gap
     UINT8 lastPipePos = pipeLocation[0];
 
+    INT8 pipeTop = 0;
+    INT8 pipeBottom = 200;
+
     INT8 gravity = -1;
     INT16 currentSpeedY;
 
@@ -76,9 +79,13 @@ void main() {
         for (i = 1; i < numberOfPipeSprites; i++) {
             
             if (i == pipeGap[1]) {
+                pipeTop = y + 8;
+                //pipeTop = y;
                 for (x = 1; x < pipeGap[0]; x++) {
                     y = y + 8;
                 }
+                //pipeBottom = y + 8;
+                pipeBottom = y;
             }
 
             y = y + 8;
@@ -91,7 +98,7 @@ void main() {
         if (lastPipePos < pipeLocation[0]) {
             //printf("%d", pipeLocation[0]);
             pipeGap[1] = rand() % 14;
-            while (pipeGap[1] > 15) {
+            while (pipeGap[1] > 15 || pipeGap[1] == 0) {
                 pipeGap[1] = rand() % 14;
             }
             pipeGap[1] = pipeGap[1] + 1;
@@ -99,7 +106,10 @@ void main() {
         }
 
         XPipe = pipeLocation[0];
-        if (playerLocation[0] == XPipe) {
+        if (playerLocation[0] == XPipe && (playerLocation[1] > pipeTop && playerLocation[1] < pipeBottom)) {
+            NULL;
+        }
+        else if (playerLocation[0] == XPipe) {
             printf("Game Over\n");
         }
 
