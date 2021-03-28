@@ -11,7 +11,16 @@ void performantDelay(UINT8 numLoops) { // more efficient delay method
     }
 }
 
+void SplashScreen() {
+    printf("                      A game by\n");
+    printf("                      Kieran Everett");
+    performantDelay(60);
+    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+}
+
 void main() {
+
+    SplashScreen();
 
     UINT8 playerScore = 0;
 
