@@ -17,6 +17,7 @@ void main() {
 
     UINT8 numberOfPipeSprites = 20; // The number of top sprites, the screen is 19/20 sprites long
     UINT8 pipeLocation[2];
+    INT8 XPipe;
 
     INT8 gravity = -1;
     INT16 currentSpeedY;
@@ -64,6 +65,12 @@ void main() {
 
         for (i = 1; i < numberOfPipeSprites; i++) {
             move_sprite(i, pipeLocation[0], pipeLocation[1] + i * 8);
+        }
+
+        // Basic game over thing when player goes through the same location as the pipe
+        XPipe = pipeLocation[0];
+        if (playerLocation[0] == XPipe) {
+            printf("Game Over");
         }
 
         performantDelay(5);
