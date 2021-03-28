@@ -1,5 +1,6 @@
 #include <gb/gb.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "BirdSprite.c"
 #include "PipeSprite.c"
 
@@ -21,7 +22,8 @@ void main() {
     
     UINT8 pipeGap[2]; // stores the location of the pipe gap
     pipeGap[0] = 6; // index 0 is the size of the gap
-    pipeGap[1] = 6; // index 1 is the height of the gap
+    pipeGap[1] = 0; // index 1 is the height of the gap
+    UINT8 lastPipePos = pipeLocation[0];
 
     INT8 gravity = -1;
     INT16 currentSpeedY;
@@ -85,10 +87,23 @@ void main() {
         }
 
         // Basic game over thing when player goes through the same location as the pipe
+
+        if (lastPipePos < pipeLocation[0]) {
+            //printf("%d", pipeLocation[0]);
+            pipeGap[1] = rand() % 14;
+            while (pipeGap[1] > 15) {
+                pipeGap[1] = rand() % 14;
+            }
+            pipeGap[1] = pipeGap[1] + 1;
+            printf("%d\n", pipeGap[1]);
+        }
+
         XPipe = pipeLocation[0];
         if (playerLocation[0] == XPipe) {
-            printf("Game Over");
+            printf("Game Over\n");
         }
+
+        lastPipePos = pipeLocation[0];
 
         performantDelay(5);
         //delay(100);
