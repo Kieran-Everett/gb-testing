@@ -15,7 +15,7 @@ void main() {
     UINT8 playerSprite = 0;
     INT8 playerLocation[2]; // stores two INT8, x and y of player
 
-    UINT8 numberOfPipeSprites = 8;
+    UINT8 numberOfPipeSprites = 20; // The number of top sprites, the screen is 19/20 sprites long
     INT8 pipeLocation[2];
 
     INT8 gravity = -1;
@@ -25,8 +25,8 @@ void main() {
     playerLocation[1] = 68;
     currentSpeedY = 0;
 
-    pipeLocation[0] = 170 -30;
-    pipeLocation[1] = 80;
+    pipeLocation[0] = 170;
+    pipeLocation[1] = 0;
 
     set_sprite_data(0, 1, Bird); // loads player sprites as sprite '0'
     set_sprite_tile(0, 0); // sets sprite '0' to sprite index '0'
