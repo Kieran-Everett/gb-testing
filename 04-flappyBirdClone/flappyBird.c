@@ -13,6 +13,8 @@ void performantDelay(UINT8 numLoops) { // more efficient delay method
 
 void main() {
 
+    UINT8 playerScore = 0;
+
     UINT8 playerSprite = 0;
     INT8 playerLocation[2]; // stores two INT8, x and y of player
 
@@ -102,15 +104,17 @@ void main() {
                 pipeGap[1] = rand() % 14;
             }
             pipeGap[1] = pipeGap[1] + 1;
-            printf("%d\n", pipeGap[1]);
+            //printf("%d\n", pipeGap[1]);
         }
 
         XPipe = pipeLocation[0];
         if (playerLocation[0] == XPipe && (playerLocation[1] > pipeTop && playerLocation[1] < pipeBottom)) {
-            NULL;
+            playerScore = playerScore + 1;
         }
         else if (playerLocation[0] == XPipe) {
-            printf("Game Over\n");
+            printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            printf("Score: %d", playerScore);
+            playerScore = 0;
         }
 
         lastPipePos = pipeLocation[0];
