@@ -16,7 +16,7 @@ void main() {
     INT8 playerLocation[2]; // stores two INT8, x and y of player
 
     UINT8 numberOfPipeSprites = 20; // The number of top sprites, the screen is 19/20 sprites long
-    INT8 pipeLocation[2];
+    UINT8 pipeLocation[2];
 
     INT8 gravity = -1;
     INT16 currentSpeedY;
