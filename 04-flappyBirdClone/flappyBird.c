@@ -18,6 +18,10 @@ void main() {
     UINT8 numberOfPipeSprites = 20; // The number of top sprites, the screen is 19/20 sprites long
     UINT8 pipeLocation[2];
     INT8 XPipe;
+    
+    UINT8 pipeGap[2]; // stores the location of the pipe gap
+    pipeGap[0] = 6; // index 0 is the size of the gap
+    pipeGap[1] = 6; // index 1 is the height of the gap
 
     INT8 gravity = -1;
     INT16 currentSpeedY;
@@ -38,6 +42,9 @@ void main() {
     //move_sprite(1, pipeLocation[0], pipeLocation[1]);
 
     UINT8 i;
+    UINT8 x;
+    UINT8 y;
+
     for (i = 1; i < numberOfPipeSprites; i++) {
         set_sprite_tile(i, 1);
         move_sprite(i, pipeLocation[0], pipeLocation[1] + i * 8);
@@ -63,8 +70,18 @@ void main() {
 
         pipeLocation[0] = pipeLocation[0] - 8;
 
+        y = 0;
         for (i = 1; i < numberOfPipeSprites; i++) {
-            move_sprite(i, pipeLocation[0], pipeLocation[1] + i * 8);
+            
+            if (i == pipeGap[1]) {
+                for (x = 1; x < pipeGap[0]; x++) {
+                    y = y + 8;
+                }
+            }
+
+            y = y + 8;
+            //move_sprite(i, pipeLocation[0], pipeLocation[1] + i * 8);
+            move_sprite(i, pipeLocation[0], pipeLocation[1] + y);
         }
 
         // Basic game over thing when player goes through the same location as the pipe
